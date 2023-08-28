@@ -17,7 +17,7 @@ namespace EnemizerLibrary
         public static int PCToSnesAddress(int addr)
         {
             byte[] b = BitConverter.GetBytes(addr);
-            b[2] = (byte)(b[2] * 2);
+            b[2] = (byte)((b[2] * 2) | 0x80);
             if (b[1] >= 0x80)
                 b[2] += 1;
             else
@@ -30,7 +30,7 @@ namespace EnemizerLibrary
         {
             int addr = PCToSnesAddress(pos);
 
-            return new byte[] { (byte)(addr >> 16), ((byte)(addr >> 8)), ((byte)addr) };
+            return new byte[] { (byte)((addr >> 16) | 0x80), ((byte)(addr >> 8)), ((byte)addr) };
         }
 
         public static int SnesByteArrayTo24bitSnesAddress(byte[] addressBytes)
