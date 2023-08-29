@@ -88,6 +88,7 @@ namespace EnemizerLibrary
 
         public DungeonObjectDataPointer(RomData romData, int roomId, int pointerAddress, byte[] address)
         {
+
             this.pointerAddress = pointerAddress;
             this.RoomId = roomId;
             this.snesAddress = Utilities.SnesByteArrayTo24bitSnesAddress(address);
